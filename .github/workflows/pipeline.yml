@@ -5,26 +5,37 @@ on:
     branches:
       - main
 
-
 jobs:
   train-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
 
+      # Step 1: Checkout code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      # Step 3: Install dependencies
       - name: Install Dependencies
         run: |
-          pip install -r engine-maintenance-dataset/requirements.txt
+          pip install -r requirements.txt
 
-      - name: Push Model to Hugging Face
+      # Step 4: Run Training (IMPORTANT)
+      - name: Train Model
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python engine-maintenance-dataset/training/push_model.py
+          python model_building/train.py
+
+      # Step 5: Upload model artifact
+      - name: Upload Model Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: maintainance_prediction_v1.joblib
