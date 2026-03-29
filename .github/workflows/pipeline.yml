@@ -24,7 +24,7 @@ jobs:
       # Step 3: Install dependencies
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r engine-maintenance-dataset/requirements.txt
 
       # Step 4: Run Training (IMPORTANT)
       - name: Train Model
