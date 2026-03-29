@@ -31,7 +31,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python model_building/train.py
+          python engine-maintenance-dataset/model_building/train.py
 
       # Step 5: Upload model artifact
       - name: Upload Model Artifact
