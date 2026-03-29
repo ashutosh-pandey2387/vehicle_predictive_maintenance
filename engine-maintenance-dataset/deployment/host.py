@@ -5,7 +5,7 @@ api = HfApi()
 space_repo = "ashuPandey/vehicle_predictive_maintenance"
 
 api.upload_folder(
-    folder_path="vehicle_predictive_maintenance/deployment",
+    folder_path="engine-maintenance-dataset/deployment",
     repo_id=space_repo,
     repo_type="space"
 )
