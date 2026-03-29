@@ -43,4 +43,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python engine-maintenance-dataset/deployment/push_model.py
+          python engine-maintenance-dataset/deployment/host.py
