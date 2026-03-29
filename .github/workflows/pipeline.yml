@@ -1,0 +1,30 @@
+name: MLOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  train-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r engine-maintenance-dataset/requirements.txt
+
+      - name: Push Model to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python engine-maintenance-dataset/training/push_model.py
