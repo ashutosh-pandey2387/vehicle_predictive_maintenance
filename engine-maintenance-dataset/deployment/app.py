@@ -14,7 +14,7 @@ model = joblib.load(model_path)
 st.title("Predictive Maintenance System")
 
 # Inputs
-rpm = st.number_input("Engine rpm", format="%.6f")
+rpm = st.number_input("Engine rpm")
 oil = st.number_input("Lub oil pressure", format="%.6f")
 fuel = st.number_input("Fuel pressure", format="%.6f")
 coolant_p = st.number_input("Coolant pressure", format="%.6f")
